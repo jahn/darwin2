@@ -34,7 +34,7 @@ c ANNA define params for WAVEBANDS
 #include "WAVEBANDS_PARAMS.h"
 #endif
 
-#ifdef ALLOW_DIAZ
+#if defined(ALLOW_DIAZ) || defined(FIX_ZOO_QUOTAS)
 #include "PTRACERS_SIZE.h"
 #include "PTRACERS_PARAMS.h"
 #include "PTRACERS_FIELDS.h"
@@ -332,8 +332,10 @@ c reduce amount of diaz
      &         Ptracer(i,j,k,bi,bj,iZooP(nz))*R_FeP_zoo(nz)
                Ptracer(i,j,k,bi,bj,iZooSi(nz)) =
      &         Ptracer(i,j,k,bi,bj,iZooP(nz))*R_SiP_zoo(nz)
+#ifdef ALLOW_CARBON
                Ptracer(i,j,k,bi,bj,iZooC(nz)) =
      &         Ptracer(i,j,k,bi,bj,iZooP(nz))*R_PC_zoo(nz)
+#endif
              ENDDO
             ENDDO
            ENDDO

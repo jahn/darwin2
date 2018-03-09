@@ -227,6 +227,12 @@ c set nutrient ratios for phyto
        val_RFeP_diaz=30.0 _d 0 * val_RFeP
        val_R_PC=120.0 _d 0
        val_R_PICPOC=0.8 _d 0
+#ifdef FIX_ZOO_QUOTAS
+       val_R_SiP_zoo=0.0 _d 0  ! 32 for Fanny's runs
+       val_R_NP_zoo=16.0 _d 0
+       val_RFeP_zoo=1.0 _d -3
+       val_R_PC_zoo=120.0 _d 0
+#endif
 #ifdef OLD_GRAZE
 c grazing hlaf saturation
        kgrazesat = 0.1 _d 0
