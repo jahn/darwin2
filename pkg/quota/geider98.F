@@ -23,7 +23,7 @@ c ====================================================================
 #ifdef QUOTA_DIAG_LIMIT
      O             Ilim,
 #endif
-     I             up_inorg,
+     U             up_inorg,
      O             PP,
      I             photo_Tempfunction,
      O             dchldt, ! chlorophyll synthesis rate
