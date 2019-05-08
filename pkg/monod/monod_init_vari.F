@@ -518,6 +518,39 @@ c       myProcId and myThid
 C ----------------------------------------------------------------------
 C From here on we do actual 3d stuff appropriate for init_varia
 
+#ifdef DAR_READ_C
+      IF (nIter0.EQ.PTRACERS_Iter0) THEN
+       DO np = 1, npmax
+        DO bj=myByLo(mythid),myByHi(myThid)
+        DO bi=myBxLo(mythid),myBxHi(myThid)
+        DO k=1,Nr
+        DO j=1-OLy,sNy+OLy
+        DO i=1-OLx,sNx+OLx
+         Ptracer(i,j,k,bi,bj,iPhy+np-1)=Ptracer(i,j,k,bi,bj,iPhy+np-1)/
+     &                                  R_PC(np)
+        ENDDO
+        ENDDO
+        ENDDO
+        ENDDO
+        ENDDO
+       ENDDO
+       DO nz = 1, nzmax
+        DO bj=myByLo(mythid),myByHi(myThid)
+        DO bi=myBxLo(mythid),myBxHi(myThid)
+        DO k=1,Nr
+        DO j=1-OLy,sNy+OLy
+        DO i=1-OLx,sNx+OLx
+         Ptracer(i,j,k,bi,bj,iZooP(nz))=Ptracer(i,j,k,bi,bj,iZooP(nz))/
+     &                                  R_PC_zoo(nz)
+        ENDDO
+        ENDDO
+        ENDDO
+        ENDDO
+        ENDDO
+       ENDDO
+      ENDIF
+#endif
+
 c reduce amount of diaz
 #ifdef ALLOW_DIAZ
        IF (nIter0.EQ.PTRACERS_Iter0) THEN
